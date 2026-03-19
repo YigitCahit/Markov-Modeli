@@ -1,37 +1,9 @@
 import random
+import tokenizer
 
 SON = "SON"
 
-liste = [
-    ["merhaba", "bugün", "nasılsın", "umarım", "iyisindir"],
-    ["merhaba", "bugün", "hava", "çok", "güzel"],
-    ["selam", "bugün", "neler", "yapacaksın"],
-    ["selam", "ne", "haber", "görüşmeyeli", "uzun", "zaman", "oldu"],
-    ["günaydın", "bugün", "hava", "yağmurlu", "olacakmış"],
-    ["günaydın", "sabah", "erken", "kalktım", "ve", "kahve", "içtim"],
-    ["bugün", "hava", "çok", "soğuk", "dikkatli", "ol"],
-    ["yarın", "hava", "güneşli", "olacak", "dışarı", "çıkalım"],
-    ["dün", "hava", "çok", "kötüydü", "evde", "kaldım"],
-    ["bugün", "hava", "sıcak", "denize", "gidelim"],
-    ["dışarı", "çıkalım", "çünkü", "hava", "çok", "güzel"],
-    ["evde", "kaldım", "çünkü", "hava", "çok", "soğuk"],
-    ["sabah", "erken", "kalktım", "spor", "yaptım", "ve", "yoruldum"],
-    ["akşam", "eve", "geldim", "kitap", "okudum", "ve", "uyudum"],
-    ["akşam", "eve", "geldim", "film", "izledim", "çok", "güzeldi"],
-    ["öğlen", "yemekte", "döner", "yedim", "çok", "lezzetliydi"],
-    ["akşam", "yemekte", "çorba", "içtim", "ve", "salata", "yedim"],
-    ["sabah", "kahvaltıda", "yumurta", "yedim", "ve", "çay", "içtim"],
-    ["bugün", "işte", "çok", "yoruldum", "hemen", "uyuyacağım"],
-    ["yarın", "okulda", "önemli", "bir", "sınav", "var"],
-    ["yarın", "işte", "önemli", "bir", "toplantı", "var"],
-    ["yeni", "bir", "bilgisayar", "aldım", "çok", "hızlı", "çalışıyor"],
-    ["yeni", "bir", "telefon", "aldım", "kamerası", "çok", "güzel"],
-    ["python", "ile", "kod", "yazmak", "çok", "zevkli", "ve", "eğlenceli"],
-    ["yapay", "zeka", "ile", "yeni", "projeler", "geliştiriyorum"],
-    ["kitap", "okudum", "ve", "sonra", "hemen", "uyudum"],
-    ["film", "izledim", "ve", "sonra", "arkadaşımla", "konuştum"],
-    ["çok", "çalıştım", "çünkü", "sınav", "çok", "zor"]
-]
+liste = tokenizer.tokenize()
 
 kelime_sayı = {}
 sayı_kelime = {}
