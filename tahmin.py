@@ -35,14 +35,14 @@ liste = [
 
 kelime_sayı = {}
 sayı_kelime = {}
-sayaç = 0
+sayac = 0
 
 for satir in liste:
     for kelime in satir:
         if kelime not in kelime_sayı:
-            kelime_sayı[kelime] = sayaç
-            sayı_kelime[sayaç] = kelime
-            sayaç += 1
+            kelime_sayı[kelime] = sayac
+            sayı_kelime[sayac] = kelime
+            sayac += 1
 
 sayı_listesi = [[kelime_sayı[k] for k in satir] for satir in liste]
 
