@@ -46,35 +46,41 @@ for satir in liste:
 
 sayı_listesi = [[kelime_sayı[k] for k in satir] for satir in liste]
 
-ikili_sayac = {}
+uclu_sayac = {}
 
 for satir in sayı_listesi:
     uzatilmis = satir + [SON]
-    for i in range(len(uzatilmis) - 1):
-        ikili = (uzatilmis[i], uzatilmis[i+1])
-        ikili_sayac[ikili] = ikili_sayac.get(ikili, 0) + 1
+    for i in range(len(uzatilmis) - 2):
+        uclu = (uzatilmis[i], uzatilmis[i+1], uzatilmis[i+2])
+        uclu_sayac[uclu] = uclu_sayac.get(uclu, 0) + 1
 
-def sonraki(mevcut):
-    bulunanlar = {ikili: miktar for ikili, miktar in ikili_sayac.items() if ikili[0] == mevcut}
+def sonraki(mevcut1, mevcut2):
+    bulunanlar = {uclu: miktar for uclu, miktar in uclu_sayac.items() if uclu[0] == mevcut1 and uclu[1] == mevcut2}
     if not bulunanlar:
         return None
-    return random.choices(list(bulunanlar.keys()), weights=bulunanlar.values(), k=1)[0][1]
+    return random.choices(list(bulunanlar.keys()), weights=bulunanlar.values(), k=1)[0][2]
 
-def dizi(baslangic):
-    sonuc = [baslangic]
-    mevcut = baslangic
+def dizi(baslangic1, baslangic2):
+    sonuc = [baslangic1, baslangic2]
+    mevcut1 = baslangic1
+    mevcut2 = baslangic2
     while True:
-        tahmin = sonraki(mevcut)
+        tahmin = sonraki(mevcut1, mevcut2)
         if tahmin is None or tahmin == SON:
             break
         sonuc.append(tahmin)
-        mevcut = tahmin
+        mevcut1 = mevcut2
+        mevcut2 = tahmin
     return sonuc
 
 print("Bilinen kelimeler:", list(kelime_sayı.keys()))
-girdi = input("Kelime girin: ").strip()
 
-baslangic_sayi = kelime_sayı[girdi]
-sonuc_sayilar = dizi(baslangic_sayi)
-sonuc_kelimeler = [sayı_kelime[s] for s in sonuc_sayilar]
-print(f"Tahmin: {sonuc_kelimeler}")
+girdi1 = input("Kelime girin: ").strip()
+girdi2 = input("2. Kelimeyi girin: ").strip()
+
+bas1_sayi = kelime_sayı[girdi1]
+bas2_sayi = kelime_sayı[girdi2]
+
+sonuc_sayilar = dizi(bas1_sayi, bas2_sayi)
+sonuc_kelimeler = [sayı_kelime[s] if s != SON else "" for s in sonuc_sayilar]
+print(f"Tahmin: {' '.join(sonuc_kelimeler)}")
