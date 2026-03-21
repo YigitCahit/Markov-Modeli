@@ -16,13 +16,18 @@ for satir in liste:
             sayı_kelime[sayac] = kelime
             sayac += 1
 
+kelime_sayı[SON] = sayac
+sayı_kelime[sayac] = SON
+SON_SAYI = sayac
+sayac += 1
+
 sayı_listesi = [[kelime_sayı[k] for k in satir] for satir in liste]
 
 ikili_sayac = {}
 uclu_sayac = {}
 
 for satir in sayı_listesi:
-    uzatilmis = satir + [SON]
+    uzatilmis = satir + [SON_SAYI]
     for i in range(len(uzatilmis) - 1):
         ikili = (uzatilmis[i], uzatilmis[i+1])
         ikili_sayac[ikili] = ikili_sayac.get(ikili, 0) + 1
@@ -46,7 +51,7 @@ def sonraki_uclu(mevcut1, mevcut2):
 def dizi(baslangic):
     sonuc = [baslangic]
     ikinci_kelime = sonraki_ikili(baslangic)
-    if ikinci_kelime is None or ikinci_kelime == SON:
+    if ikinci_kelime is None or ikinci_kelime == SON_SAYI:
         return sonuc
         
     sonuc.append(ikinci_kelime)
@@ -55,7 +60,7 @@ def dizi(baslangic):
     
     while True:
         tahmin = sonraki_uclu(mevcut1, mevcut2)
-        if tahmin is None or tahmin == SON:
+        if tahmin is None or tahmin == SON_SAYI:
             break
         sonuc.append(tahmin)
         mevcut1 = mevcut2
@@ -65,7 +70,7 @@ def dizi(baslangic):
 
 print("Bilinen kelimeler:", list(kelime_sayı.keys()))
 
-girdi = input("Kelime girin: ").strip()
+girdi = input("Kelime girin: ").strip().lower()
 
 bas_sayi = kelime_sayı[girdi]
 sonuc_sayilar = dizi(bas_sayi)
